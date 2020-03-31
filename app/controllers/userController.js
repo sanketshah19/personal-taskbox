@@ -12,3 +12,14 @@ module.exports.register = function(req, res){
             res.send(err)
         })
 }
+
+module.exports.login = function(req, res){
+    const {body} = req
+    User.findByCredentials(body.email, body.password)
+        .then((user) => {
+            res.send(user)
+        })
+        .catch((err) => {
+            res.send(err)
+        })
+}
