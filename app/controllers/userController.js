@@ -17,7 +17,10 @@ module.exports.login = function(req, res){
     const {body} = req
     User.findByCredentials(body.email, body.password)
         .then((user) => {
-            res.send(user)
+            return user.generateToken()
+        })
+        .then((token) => {
+            res.send({token})
         })
         .catch((err) => {
             res.send(err)
