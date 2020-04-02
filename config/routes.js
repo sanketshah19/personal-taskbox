@@ -3,6 +3,7 @@ const router = express.Router()
 
 const userController = require('../app/controllers/userController')
 const labelsController = require('../app/controllers/labelsController')
+const tasksController = require('../app/controllers/tasksController')
 const authenticateUser = require('../app/middlewares/authentication')
 
 router.post('/users/register', userController.register)
@@ -14,5 +15,7 @@ router.post('/labels', authenticateUser, labelsController.create)
 router.get('/labels/:id', authenticateUser, labelsController.show)
 router.put('/labels/:id', authenticateUser, labelsController.update)
 router.delete('/labels/:id', authenticateUser, labelsController.destroy)
+
+router.get('/tasks', authenticateUser, tasksController.list)
 
 module.exports = router
