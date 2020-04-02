@@ -53,3 +53,18 @@ module.exports.update = function(req, res){
             res.send(err)
         })
 }
+
+module.exports.destroy = function(req, res){
+    const {id} = req.params
+    Task.findOneAndDelete({_id: id, user: req.user._id})
+        .then((task) => {
+            if(task){
+                res.send(task)
+            }else{
+                res.send({})
+            }
+        })
+        .catch((err) => {
+            res.send(err)
+        })
+}

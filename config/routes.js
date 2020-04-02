@@ -20,5 +20,6 @@ router.get('/tasks', authenticateUser, tasksController.list)
 router.post('/tasks', authenticateUser, tasksController.create)
 router.get('/tasks/:id', authenticateUser, tasksController.show)
 router.put('/tasks/:id', authenticateUser, tasksController.update)
+router.delete('/tasks/:id', authenticateUser, tasksController.destroy)
 
 module.exports = router
