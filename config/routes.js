@@ -17,5 +17,6 @@ router.put('/labels/:id', authenticateUser, labelsController.update)
 router.delete('/labels/:id', authenticateUser, labelsController.destroy)
 
 router.get('/tasks', authenticateUser, tasksController.list)
+router.post('/tasks', authenticateUser, tasksController.create)
 
 module.exports = router
