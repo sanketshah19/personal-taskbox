@@ -13,5 +13,6 @@ router.get('/labels', authenticateUser, labelsController.list)
 router.post('/labels', authenticateUser, labelsController.create)
 router.get('/labels/:id', authenticateUser, labelsController.show)
 router.put('/labels/:id', authenticateUser, labelsController.update)
+router.delete('/labels/:id', authenticateUser, labelsController.destroy)
 
 module.exports = router

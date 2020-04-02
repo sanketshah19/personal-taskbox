@@ -55,3 +55,18 @@ module.exports.update = function(req, res){
                 res.send(err)
             })
 }
+
+module.exports.destroy = function(req, res){
+    const {id} = req.params
+    Label.findOneAndDelete({_id: id, user: req.user._id})
+            .then((label) => {
+                if(label){
+                    res.send(label)
+                }else{
+                    res.send({})
+                }
+            })
+            .catch((err) => {
+                res.send(err)
+            })
+}
