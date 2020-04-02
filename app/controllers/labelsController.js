@@ -25,3 +25,18 @@ module.exports.create = function(req, res){
                 res.send(err)
             })
 }
+
+module.exports.show = function(req, res){
+    const id = req.params.id
+    Label.findOne({_id: id, user: req.user._id})
+            .then((label) => {
+                if(label){
+                    res.send(label)
+                }else{
+                    res.send({})
+                }
+            })
+            .catch((err) => {
+                res.send(err)
+            })
+}

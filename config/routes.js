@@ -11,5 +11,6 @@ router.delete('/users/logout', authenticateUser, userController.logout)
 
 router.get('/labels', authenticateUser, labelsController.list)
 router.post('/labels', authenticateUser, labelsController.create)
+router.get('/labels/:id', authenticateUser, labelsController.show)
 
 module.exports = router
