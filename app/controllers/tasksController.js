@@ -38,3 +38,18 @@ module.exports.show = function(req, res){
             res.send(err)
         })
 }
+
+module.exports.update = function(req, res){
+    const {body} = req, {id} = req.params
+    Task.findOneAndUpdate({_id: id, user: req.user._id}, body, {new: true, runValidators: true}).populate('labels')
+        .then((task) => {
+            if(task){
+                res.send(task)
+            }else{
+                res.send({})
+            }
+        })
+        .catch((err) => {
+            res.send(err)
+        })
+}
