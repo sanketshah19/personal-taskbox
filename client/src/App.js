@@ -3,6 +3,7 @@ import {Navbar, Nav} from 'react-bootstrap';
 import {BrowserRouter, Route, Switch, Link} from 'react-router-dom';
 
 import Home from './components/common/Home';
+import Register from './components/users/Register';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
         <Switch>
 
           <Route path="/" component={Home} exact={true} />
+          <Route path="/users/register" component={Register} />
 
         </Switch>
 
