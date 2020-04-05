@@ -1,12 +1,45 @@
 import React from 'react';
+import swal from 'sweetalert';
 import {Navbar, Nav} from 'react-bootstrap';
 import {BrowserRouter, Route, Switch, Link} from 'react-router-dom';
+
+import axios from './config/axios';
 
 import Home from './components/common/Home';
 import Register from './components/users/Register';
 import Login from './components/users/Login';
 
 function App() {
+  function handleLogout(){
+    swal({
+      title: "Are you sure?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        axios.delete('/users/logout', {
+                headers: {
+                  'x-auth': localStorage.getItem('authToken')
+                }
+              })
+              .then((response) => {
+                swal("Successfully Logout!", {
+                  icon: "success",
+                })
+                localStorage.removeItem('authToken')
+                setTimeout(() => {
+                  window.location.reload()
+                  window.location.href = "/"
+                }, 500);
+              })
+              .catch((err) => {
+                swal ("Oops", `${err}` ,"error")
+              })
+      }
+    })
+  }
   return (
     <div className="container-fluid">
       <BrowserRouter>
@@ -19,8 +52,8 @@ function App() {
               <Link to="/" className="ml-2">Home</Link>
               <Link to="/tasks" className="ml-2">Tasks</Link>
               <Link to="/labels" className="ml-2">Labels</Link>
-              <Link to="/calender" className="ml-2">Calender</Link>
-              <Link to="#" className="ml-2">Logout</Link>
+              <Link to="/calendar" className="ml-2">Calendar</Link>
+              <Link to="#" onClick={handleLogout} className="ml-2">Logout</Link>
             </Nav.Item>
           </Navbar>
         ) 
