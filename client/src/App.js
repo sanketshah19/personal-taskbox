@@ -4,10 +4,13 @@ import {Navbar, Nav} from 'react-bootstrap';
 import {BrowserRouter, Route, Switch, Link} from 'react-router-dom';
 
 import axios from './config/axios';
+import PrivateRoute from './components/privateRoute/PrivateRoute'
 
 import Home from './components/common/Home';
 import Register from './components/users/Register';
 import Login from './components/users/Login';
+
+import TasksList from './components/tasks/List';
 
 function App() {
   function handleLogout(){
@@ -75,6 +78,8 @@ function App() {
           <Route path="/" component={Home} exact={true} />
           <Route path="/users/register" component={Register} />
           <Route path="/users/login" component={Login} />
+
+          <PrivateRoute path="/tasks" component={TasksList} exact={true} />
 
         </Switch>
 
