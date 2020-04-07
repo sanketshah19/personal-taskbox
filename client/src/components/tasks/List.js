@@ -21,7 +21,6 @@ class TasksList extends React.Component{
             }
         })
             .then((response) => {
-                console.log(response.data)
                 const tasks = response.data
                 this.setState({tasks})
             })
@@ -63,7 +62,7 @@ class TasksList extends React.Component{
                                                 <strong>Due Date</strong>: {moment(task.dueDate).format('LL')}
                                             </Card.Text>
                                             </Card.Body>
-                                            <Card.Footer className="text-muted">Created At: {moment(task.createdAt).startOf('day').fromNow()}</Card.Footer>
+                                            <Card.Footer className="text-muted">Created At: {moment(task.createdAt).startOf('second').fromNow()}</Card.Footer>
                                         </Card>
                                     </div>
                                 )
