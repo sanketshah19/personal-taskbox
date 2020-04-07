@@ -14,6 +14,8 @@ import TasksList from './components/tasks/List';
 import TasksNew from './components/tasks/New';
 import TasksEdit from './components/tasks/Edit';
 
+import LabelsList from './components/labels/List';
+
 function App() {
   function handleLogout(){
     swal({
@@ -84,6 +86,8 @@ function App() {
           <PrivateRoute path="/tasks" component={TasksList} exact={true} />
           <PrivateRoute path="/tasks/new" component={TasksNew} />
           <PrivateRoute path="/tasks/edit/:id" component={TasksEdit} />
+
+          <PrivateRoute path="/labels" component={LabelsList} exact={true} />
 
         </Switch>
 
