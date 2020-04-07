@@ -12,6 +12,7 @@ import Login from './components/users/Login';
 
 import TasksList from './components/tasks/List';
 import TasksNew from './components/tasks/New';
+import TasksEdit from './components/tasks/Edit';
 
 function App() {
   function handleLogout(){
@@ -82,6 +83,7 @@ function App() {
 
           <PrivateRoute path="/tasks" component={TasksList} exact={true} />
           <PrivateRoute path="/tasks/new" component={TasksNew} />
+          <PrivateRoute path="/tasks/edit/:id" component={TasksEdit} />
 
         </Switch>
 

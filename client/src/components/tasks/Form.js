@@ -1,5 +1,6 @@
 import React from 'react';
 import * as Yup from 'yup';
+import moment from 'moment';
 import swal from 'sweetalert';
 import {Link} from 'react-router-dom';
 import DateTime from 'react-datetime';
@@ -62,12 +63,12 @@ class TasksForm extends React.Component{
                     <div className="col-md-6 mx-auto">
                         <Formik
                             initialValues={{
-                                title: '',
-                                status: '',
-                                label: '',
+                                title: this.props.task ? this.props.task.title : '',
+                                status: this.props.task ? this.props.task.status.map(status => status.type) : '',
+                                label: this.props.task ? this.props.task.labels.map(label=>{return{'label':label.name,'value':label._id}}) : '',
                                 newLabels: '',
                                 isLoading:false,
-                                dueDate: new Date()
+                                dueDate: this.props.task ? moment(this.props.task.dueDate).utc() : new Date()
                             }}
                             validationSchema={Yup.object().shape({
                                 title: Yup.string()
@@ -112,7 +113,7 @@ class TasksForm extends React.Component{
 
                                     <div className="form-group">
                                         <label htmlFor="status">Status</label>
-                                        <Field name="status" as="select" className={'form-control' + (errors.status && touched.status ? ' is-invalid' : '')} placeholder="Select Status">
+                                        <Field name="status" as="select" className={'form-control' + (errors.status && touched.status ? ' is-invalid' : '')} placeholder="Select Status" value={values.status}>
                                             <option value="">Select Status</option>
                                             <option value="New">New</option>
                                             <option value="In Progress">In Progress</option>
@@ -145,6 +146,7 @@ class TasksForm extends React.Component{
                                         }
                                         options={this.state.labels}
                                         className={(errors.label && touched.label ? ' is-invalid' : '')}
+                                        value={values.label}
                                         />
                                         <ErrorMessage name="label" component="div" className="invalid-feedback" />
                                     </div>
@@ -158,6 +160,7 @@ class TasksForm extends React.Component{
                                         onChange={(moment)=>{
                                             moment && setFieldValue('dueDate', moment.utc())} }
                                         className={(errors.dueDate && touched.dueDate ? ' is-invalid' : '')}
+                                        value={values.dueDate}
                                         />
                                         <ErrorMessage name="dueDate" component="div" className="invalid-feedback" />
                                     </div>
