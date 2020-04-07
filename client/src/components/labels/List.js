@@ -3,6 +3,7 @@ import swal from 'sweetalert';
 import {Button, Table} from 'react-bootstrap';
 
 import axios from '../../config/axios';
+import LabelsNew from './New';
 
 import LabelForm from '../../Images/LabelForm.jpg';
 
@@ -33,11 +34,36 @@ class LabelsList extends React.Component{
 
     }
 
+    handleSubmit = (formData) => {
+        // axios.post('/labels', formData, {
+        //         headers: {
+        //             'x-auth': localStorage.getItem('authToken')
+        //         }
+        //     })
+        //         .then((response) => {
+        //             if(response.data.hasOwnProperty('errmsg')){
+        //                 if(response.data.name === "BulkWriteError" && response.data.code === 11000){
+        //                     swal ("Oops", `${response.data.op.name} already exists` ,"error")
+        //                 }
+        //             }else if(response.data.hasOwnProperty('errors')){
+        //                 swal("Oops!", `${response.data.message}`, "error")
+        //             }else{  
+        //                 swal("Success!", "Label Added Successfully!", "success")
+        //                 const label = response.data
+        //                 this.setState((prevState) => ({...prevState.labels.concat() label}))
+        //             }
+        //             console.log(response)
+        //         })
+        //         .catch((err) => {
+        //             swal("Oops", `${err}` ,"error")
+        //         })
+    }
+
     render(){
         return(
             <div>
-                <h2 className="text-center">Labels List</h2><hr/>
-                <Button>Add Label</Button>
+                <h2 className="text-center mt-1">Listing Labels</h2><hr/>
+                <LabelsNew/>
                 <div className="row mt-3">
                     <div className="col-md-6 mx-auto">
                         <img style={{width: '85%', height: '85%'}} src={LabelForm} alt="LabelForm" />
