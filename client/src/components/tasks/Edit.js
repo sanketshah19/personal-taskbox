@@ -29,6 +29,7 @@ class TasksEdit extends React.Component{
     }
     
     handleSubmit = (formData) => {
+        console.log(formData)
         const id = this.props.match.params.id
         axios.put(`/tasks/${id}`, formData, {
             headers: {
@@ -37,11 +38,12 @@ class TasksEdit extends React.Component{
         })
             .then((response) => {
                 if(response.data.hasOwnProperty('errors')){
-                    swal ("Oops", `${response.data.errors}` ,"error")
+                    swal ("Oops", `${response.data.message}` ,"error")
                 }else{
                     swal("Success!", "Task Updated Successfully!", "success")
                     this.props.history.push('/tasks')
                 }
+                console.log(response)
             })
             .catch((err) => {
                 swal ("Oops", `${err}` ,"error")  

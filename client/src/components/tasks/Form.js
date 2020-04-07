@@ -64,7 +64,7 @@ class TasksForm extends React.Component{
                         <Formik
                             initialValues={{
                                 title: this.props.task ? this.props.task.title : '',
-                                status: this.props.task ? this.props.task.status.map(status => status.type) : '',
+                                status: this.props.task ? this.props.task.status.map(status => status.type).toString() : '',
                                 label: this.props.task ? this.props.task.labels.map(label=>{return{'label':label.name,'value':label._id}}) : '',
                                 newLabels: '',
                                 isLoading:false,

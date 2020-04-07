@@ -10,7 +10,8 @@ class TasksList extends React.Component{
     constructor(){
         super()
         this.state = {
-            tasks: []
+            tasks: [],
+            dupTasks: []
         }
     }
 
@@ -22,7 +23,7 @@ class TasksList extends React.Component{
         })
             .then((response) => {
                 const tasks = response.data
-                this.setState({tasks})
+                this.setState({tasks, dupTasks: tasks})
             })
             .catch((err) => {
                 swal ("Oops", `${err}` ,"error")
@@ -59,6 +60,12 @@ class TasksList extends React.Component{
                 })
             }
           });
+    }
+
+    handleSearch = (e) => {
+        const value = e.target.value
+        const tasks = this.state.dupTasks.filter(task => task.title.toLowerCase().includes(value.toLowerCase()) || task.labels.find(label => label.name.toLowerCase().includes(value.toLowerCase())))
+        this.setState({tasks})
     }
 
     render(){
