@@ -31,32 +31,31 @@ class LabelsList extends React.Component{
     }
 
     handleRemove = (id) => {
-
-    }
-
-    handleSubmit = (formData) => {
-        // axios.post('/labels', formData, {
-        //         headers: {
-        //             'x-auth': localStorage.getItem('authToken')
-        //         }
-        //     })
-        //         .then((response) => {
-        //             if(response.data.hasOwnProperty('errmsg')){
-        //                 if(response.data.name === "BulkWriteError" && response.data.code === 11000){
-        //                     swal ("Oops", `${response.data.op.name} already exists` ,"error")
-        //                 }
-        //             }else if(response.data.hasOwnProperty('errors')){
-        //                 swal("Oops!", `${response.data.message}`, "error")
-        //             }else{  
-        //                 swal("Success!", "Label Added Successfully!", "success")
-        //                 const label = response.data
-        //                 this.setState((prevState) => ({...prevState.labels.concat() label}))
-        //             }
-        //             console.log(response)
-        //         })
-        //         .catch((err) => {
-        //             swal("Oops", `${err}` ,"error")
-        //         })
+        swal({
+            title: "Are you sure?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+              swal("Label Deleted Successfully!", {
+                icon: "success",
+              })
+              axios.delete(`/labels/${id}`, {
+                headers: {
+                    'x-auth': localStorage.getItem('authToken')
+                }
+            })
+                .then((response) => {
+                    const labels = this.state.labels.filter(label => label._id !== id)
+                    this.setState({labels})
+                })
+                .catch((err) => {
+                    swal("Oops", `${err}` ,"error")
+                })
+            } 
+          })
     }
 
     render(){
