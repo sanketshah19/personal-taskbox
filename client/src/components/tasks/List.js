@@ -29,6 +29,38 @@ class TasksList extends React.Component{
             })
     }
 
+    handleRemove = (id) => {
+        swal({
+            title: "Are you sure?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+                axios.delete(`/tasks/${id}`, {
+                    headers: {
+                        'x-auth': localStorage.getItem('authToken')
+                    }
+                })
+                .then((response) => {
+                    if(response.data.hasOwnProperty('errors')){
+                        swal("Oops!", `${response.data.message}`, "error")
+                    }else{
+                        swal("Task Removed Successfully!", {
+                            icon: "success",
+                          })
+                        const tasks = this.state.tasks.filter(task => task._id !== id )
+                        this.setState({tasks})
+                    }
+                })
+                .catch((err) => {
+                    swal ("Oops", `${err}` ,"error")
+                })
+            }
+          });
+    }
+
     render(){
         return(
             <div className="container-fluid">
@@ -62,7 +94,7 @@ class TasksList extends React.Component{
                                                 <strong>Due Date</strong>: {moment(task.dueDate).format('LL')}
                                             </Card.Text>
                                             <Card.Link href={`/tasks/edit/${task._id}`}>Edit</Card.Link>
-                                            <Card.Link href="#">Remove</Card.Link>
+                                            <Card.Link href="#" onClick={() => this.handleRemove(task._id)}>Remove</Card.Link>
                                             </Card.Body>
                                             <Card.Footer className="text-muted">Created At: {moment(task.createdAt).startOf('second').fromNow()}</Card.Footer>
                                         </Card>
