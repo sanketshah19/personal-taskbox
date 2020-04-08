@@ -98,7 +98,7 @@ class TasksList extends React.Component{
                                             </Card.Title><hr/>
                                             <Card.Text>
                                                 <strong>Labels</strong>: {task.labels && task.labels.map(label => <Badge variant="light" key={label._id}>{label.name}</Badge>)}<br/>
-                                                <strong>Due Date</strong>: {moment(task.dueDate).format('LL')}
+                                                <strong>Due Date</strong>: {moment(task.dueDate).utc().format('LLL')}
                                             </Card.Text>
                                             <Card.Link href={`/tasks/edit/${task._id}`}>Edit</Card.Link>
                                             <Card.Link href="#" onClick={() => this.handleRemove(task._id)}>Remove</Card.Link>

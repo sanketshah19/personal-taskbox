@@ -16,6 +16,8 @@ import TasksEdit from './components/tasks/Edit';
 
 import LabelsList from './components/labels/List';
 
+import EventCalender from './components/calendar/EventCalendar';
+
 function App() {
   function handleLogout(){
     swal({
@@ -89,6 +91,8 @@ function App() {
 
           <PrivateRoute path="/labels" component={LabelsList} exact={true} />
 
+          <PrivateRoute path="/calendar" component={EventCalender} />
+          
         </Switch>
 
       </BrowserRouter>

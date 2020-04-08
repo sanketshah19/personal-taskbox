@@ -81,7 +81,7 @@ class TasksForm extends React.Component{
                                     .ensure()
                                     .required('Must have atleast one label'),
                                 dueDate: Yup.date()
-                                    .min(new Date(),'Due date should be a future date')
+                                    .min(moment().utc(),'Due date should be a future date')
                                     .required('Must enter a Date')   
                             })}
                             onSubmit={(values, {setSubmitting,resetForm}) => {
