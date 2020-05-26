@@ -6,7 +6,7 @@
 
 `YouTube Link` https://youtu.be/YFTsfb3wDGA
 
-Full-stack Web App in which user can perform CRUD operations on tasks and can also view those tasks in calender view. User can also change the status(New, In Propgress, Completed) of tasks accroding to the progress user has made.
+Full-stack Web App in which user can perform CRUD operations on tasks and can also view those tasks in calender view. User can change the status(New, In Propgress, Completed) of tasks accroding to the progress user has made and can also add the due date for the task.
 
 
 This project uses the following technologies:
