@@ -6,7 +6,7 @@
 
 `YouTube Link` https://youtu.be/YFTsfb3wDGA
 
-Full-stack Web App in which user can perform CRUD operations on tasks and can also view those tasks in calender view. User can change the status(New, In Propgress, Completed) of tasks accroding to the progress user has made and can also add the due date for the task.
+Full-stack Web App in which user can perform CRUD operations on tasks and can also view those tasks in calender view. User can add the labels for the task, change the status(New, In Propgress, Completed) of tasks accroding to the progress user has made and can also add the due date for the task. This app allows user to create new label while creating a task using react select.
 
 
 This project uses the following technologies:
@@ -21,6 +21,7 @@ This project uses the following technologies:
 - [Yup](https://www.npmjs.com/package/yup) schema builder for value parsing and validation
 - [Fullcalendar-reactwrapper](https://openbase.io/js/fullcalendar-reactwrapper) A React Calendar with events
 - [React-datetime](https://www.npmjs.com/package/react-datetime) date and time picker in the same React.js component
+- [React Select](https://react-select.com/home) for multiselect, async and creatable support
 
 ## Quick Start
 
