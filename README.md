@@ -6,8 +6,7 @@
 
 `YouTube Link` https://youtu.be/YFTsfb3wDGA
 
-Full-stack Web App in which user can perform CRUD operations on tasks and can also view those tasks in calendar view. User can add the labels for the task, change the status(New, In Propgress, Completed) of tasks accroding to the progress user has made and can also add the due date for the task. This app allows user to create new label while creating a task using react select. User can filter tasks based on label as well as task.
-
+Full-stack Web App in which users can perform CRUD operations on tasks and can also view those tasks in calendar view. It allows the user to add the labels for the task, change the status(New, In Progress, Completed) of tasks according to the progress user has made and  also allows user to add the due date for the task. This app allow users to create new label while creating a task using react select. Users can filter tasks based on labels as well as tasks.
 
 This project uses the following technologies:
 
