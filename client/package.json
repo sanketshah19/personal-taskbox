@@ -10,7 +10,7 @@
     "bootstrap": "5.1.0",
     "formik": "2.2.9",
     "fullcalendar-reactwrapper": "1.0.7",
-    "moment": "2.24.0",
+    "moment": "2.29.1",
     "react": "17.0.2",
     "react-bootstrap": "1.6.1",
     "react-datetime": "2.16.3",
